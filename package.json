@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/uventura/closer/issues"
   },
-  "homepage": "https://github.com/uventura/closer#readme"
+  "homepage": "https://github.com/uventura/closer#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
