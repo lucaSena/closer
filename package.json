@@ -1,0 +1,19 @@
+{
+  "name": "closer",
+  "version": "1.0.0",
+  "description": "Instagram Clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uventura/closer.git"
+  },
+  "author": "Sena, Ualiton, Arthur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uventura/closer/issues"
+  },
+  "homepage": "https://github.com/uventura/closer#readme"
+}
