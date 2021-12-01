@@ -1,6 +1,23 @@
 const express = require('express')
 const app = express()
 
+// Database
+const connection = require('./db/config')
+
+require('dotenv').config()
+console.log(process.env.USERNAME)
+
+// Database Connection
+connection
+    .authenticate()
+    .then(()=>{
+        console.log('[SUCCESS] Database Connection Stablished')
+    })
+    .catch((error)=>{
+        console.log('[ERROR] Database Connection Not Stablished')
+        throw error
+    })
+
 // Config
 app.set('view engine','ejs');
 app.use(express.static('public')); // Static Files Folder
@@ -8,9 +25,15 @@ app.use(express.static('public')); // Static Files Folder
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
+// Routes
+const LoginRouter = require('./routes/login')
+
+// Using Routes
+app.use('/', LoginRouter)
+
 // Main Route
 app.get('/', (req, res)=>{
-    res.render('main', {title: 'Main Title'});
+    res.render('login', {title: 'Main Title'});
 })
 
 // Run Server
