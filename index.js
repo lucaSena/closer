@@ -4,6 +4,9 @@ const app = express()
 // Database
 const connection = require('./db/config')
 
+// Models
+const UserModel = require('./models/User')
+
 // Config
 app.set('view engine','ejs');
 app.use(express.static('public')); // Static Files Folder
