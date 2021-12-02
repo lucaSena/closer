@@ -5,17 +5,17 @@ const PhotoRouter = express.Router()
 
 // Upload Photo
 PhotoRouter.get('/photos',(req, res)=>{
-    res.render('test')
+    res.render('new_image')
 });
 
 PhotoRouter.post('/image',(req, res)=>{
-    // console.log(req.body)
      const description = req.body.description
      const visibility = req.body.visibility == "1"
      const show_likes = req.body.show_likes == "1"
      const url_image = req.body.url_image
      const user_id = 23
      const post_date = "1999-02-02"
+
      PhotoModel.create({
          description: description,
          visibility: visibility,
