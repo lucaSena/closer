@@ -6,6 +6,7 @@ const connection = require('./db/config')
 
 // Models
 const UserModel = require('./models/User')
+const PhotoModel = require('./models/Photo')
 
 // Config
 app.set('view engine','ejs');
