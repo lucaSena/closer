@@ -20,8 +20,12 @@ const Photo = connection.define('photo', {
         type: Sequelize.BOOLEAN,
         allowNull: false
     },
-    poster_id:{
+    author_id:{
         type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    image_url:{
+        type: Sequelize.TEXT,
         allowNull: false
     }
 })

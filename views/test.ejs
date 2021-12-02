@@ -1,0 +1,14 @@
+<%-include('partials/header.ejs', {'title':'Imagem'})%>
+    <form action="/image" method="POST">
+        <textarea name="description" id="" cols="30" rows="10" placeholder="Descr1pt10n"></textarea>
+        <select name="visibility">
+            <option value = "0">Hide photo</option>
+            <option value = "1">Show photo</option>
+        </select>
+        <select name = "show_likes">
+            <option value = "0">Hide likes</option>
+            <option value = "1">Show likes</option>
+        </select>
+        <input type = "text" name="url_image" placeholder="Neylindo">
+        <input type = "submit" value="submit">
+    </form>
