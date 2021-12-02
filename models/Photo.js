@@ -41,4 +41,4 @@ Photo.sync({force: false})
         console.log('[DATABASE ERROR] Photo Table Not Used')
     })
 
-    module.exports = Photo
+module.exports = Photo

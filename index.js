@@ -8,6 +8,10 @@ const connection = require('./db/config')
 const UserModel = require('./models/User')
 const PhotoModel = require('./models/Photo')
 
+// Routes
+const LoginRouter = require('./routes/login')
+const UserRouter = require('./routes/user')
+
 // Config
 app.set('view engine','ejs');
 app.use(express.static('public')); // Static Files Folder
@@ -15,11 +19,9 @@ app.use(express.static('public')); // Static Files Folder
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
-// Routes
-const LoginRouter = require('./routes/login')
-
 // Using Routes
 app.use('/', LoginRouter)
+app.use('/', UserRouter)
 
 // Main Route
 app.get('/', (req, res)=>{
@@ -55,6 +57,30 @@ app.post('/image',(req, res)=>{
         res.redirect('/')
     })
 })
+
+app.get('/image/:id', (req, res)=>{
+    const id = req.params.id
+
+    PhotoModel.findOne({
+        where:{
+            id:id
+        }
+    }).then((image)=>{
+        if(image != null)
+        {
+            res.render('image', {img_url: image['image_url']})
+        }
+        else
+        {
+            res.send('<h1>Image not founded</h1>')
+        }
+    }).catch((error)=>{
+        if(error)
+            throw error
+        console.log('Image Id Has Errors')
+    })
+})
+
 // Run Server
 app.listen(3000, (error)=>{
     if(error)
