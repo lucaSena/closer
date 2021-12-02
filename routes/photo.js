@@ -16,17 +16,17 @@ PhotoRouter.get('/photos',(req, res)=>{
 PhotoRouter.post('/image', PhotoMiddleware.single('image'), async (req, res)=>{
     const imagePath = path.join(__dirname, '../public/images');
     const fileUpload = new ResizeClass(imagePath);
+
     if (!req.file) {
         res.status(401).json({error: 'Please provide an image'});
     }
+    
     const filename = await fileUpload.save(req.file.buffer);
-    return res.status(200).json({ name: filename });
 
-    /*
     const description = req.body.description
     const visibility = req.body.visibility == "1"
     const show_likes = req.body.show_likes == "1"
-    const url_image = req.body.url_image
+    const url_image = filename
     const user_id = 23
     const post_date = "1999-02-02"
 
@@ -46,7 +46,7 @@ PhotoRouter.post('/image', PhotoMiddleware.single('image'), async (req, res)=>{
         
         console.log('DEU MERDA')
         res.redirect('/')
-    })*/
+    })
  })
  
 PhotoRouter.get('/image/:id', (req, res)=>{
