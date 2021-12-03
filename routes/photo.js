@@ -14,7 +14,7 @@ PhotoRouter.get('/photos',(req, res)=>{
 
 // Upload Photo Action
 PhotoRouter.post('/image', PhotoMiddleware.single('image'), async (req, res)=>{
-    const imagePath = path.join(__dirname, '../public/images');
+    const imagePath = path.join(__dirname, '../public/image');
     const fileUpload = new ResizeClass(imagePath);
 
     if (!req.file) {

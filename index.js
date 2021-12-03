@@ -7,11 +7,13 @@ const connection = require('./db/config')
 // Models
 const UserModel = require('./models/User')
 const PhotoModel = require('./models/Photo')
+const CommentModel = require('./models/Comment')
 
 // Routes
 const LoginRouter = require('./routes/login')
 const UserRouter = require('./routes/user')
 const PhotoRouter = require('./routes/photo')
+const CommentRouter = require('./routes/comment')
 
 // Config
 app.set('view engine','ejs');
@@ -24,6 +26,7 @@ app.use(express.json());
 app.use('/', LoginRouter)
 app.use('/', UserRouter)
 app.use('/', PhotoRouter)
+app.use('/', CommentRouter)
 
 // Main Route
 app.get('/', (req, res)=>{
