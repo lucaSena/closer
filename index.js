@@ -10,6 +10,7 @@ const PhotoModel = require('./models/Photo')
 const CommentModel = require('./models/Comment')
 
 // Routes
+const MainRouter = require('./routes/main')
 const LoginRouter = require('./routes/login')
 const UserRouter = require('./routes/user')
 const PhotoRouter = require('./routes/photo')
@@ -23,6 +24,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 // Using Routes
+app.use('/', MainRouter)
 app.use('/', LoginRouter)
 app.use('/', UserRouter)
 app.use('/', PhotoRouter)
