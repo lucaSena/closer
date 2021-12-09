@@ -1,18 +1,20 @@
 class MiddleUser
 {
-    static logged(req, res, next)
+    static notLogged(req, res, next)
     {
-        if(req.session.userLogged != undefined)
+        if(req.session.UserInfo == undefined)
             next()
         else
             res.redirect('/')
     }
 
-    static notLogged(req, res, next)
+    static logged(req, res, next)
     {
-        if(req.session.userLogged != undefined)
+        if(req.session.UserInfo != undefined)
             res.redirect('/')
         else
             next()
     }
 }
+
+module.exports = MiddleUser

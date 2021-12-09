@@ -1,6 +1,12 @@
 <%-include('partials/head.ejs', {'title':'Sign In'})%>
 <%-include('partials/header.ejs')%>
 
+<b>
+    <%if(message != false){%>
+        <%=message%>
+    <%}%>
+</b>
+
 <form action="/signin" method="POST">
     <input type="email" name="email" placeholder="Email">
     <br><br>
