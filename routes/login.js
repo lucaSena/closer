@@ -12,15 +12,34 @@ LoginRouter.post('/signin', (req, res)=>{
     const email = req.body.email
     const password = req.body.password
 
-    UserModel.
+    console.log(email, password)
 
-    req.session.userInfo = {
-        id: 1,
-        email: 'pessoa',
-        username: 'alguma coisa'
-    }
+    UserModel.findOne({
+        where:{
+            email: email,
+            password: password
+        }
+    }).then((user)=>{
+        if(user)
+        {
+            req.session.UserInfo = {
+                id: user.id,
+                email: user.email,
+                username: user.username
+            }
 
-    res.json(req.session.userInfo)
+            console.log(user)
+
+            res.redirect('/home')
+        }
+        else
+        {
+            res.redirect('/signin')
+        }
+    }).catch((error)=>{
+        throw error
+        res.redirect('/')
+    })
 })
 
 // Sign Up Routes
@@ -48,7 +67,7 @@ LoginRouter.post('/signup', (req, res)=>{
             username: username,
             email: email,
             password: password,
-            genre: genre,
+            gender: genre,
             description: description,
             birth_date: date
         }).then(()=>{

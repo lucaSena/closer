@@ -38,7 +38,7 @@ const User = connection.define('user', {
         type: Sequelize.DATEONLY,
         allowNull: false
     },
-    genre:{
+    gender:{
         type: Sequelize.STRING,
         allowNull: false
     }
