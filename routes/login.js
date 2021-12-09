@@ -18,6 +18,8 @@ LoginRouter.get('/signup', (req, res)=>{
 })
 
 LoginRouter.post('/signup', (req, res)=>{
+    const firstname = req.body.firstname
+    const lastname = req.body.lastname
     const username = req.body.username
     const email = req.body.email
     const password = req.body.password
@@ -27,9 +29,11 @@ LoginRouter.post('/signup', (req, res)=>{
 
     console.log(date)
 
-    if(username && email && password && genre && description && date)
+    if(firstname && lastname && username && email && password && genre && description && date)
     {
         UserModel.create({
+            lastname: lastname,
+            firstname: firstname,
             username: username,
             email: email,
             password: password,

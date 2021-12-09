@@ -5,6 +5,15 @@ const sequelize = require('sequelize')
 const connection = require('../db/config')
 
 const User = connection.define('user', {
+    firstname:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    lastname:{
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+    ,
     username:{
         type: Sequelize.STRING,
         allowNull: false
@@ -31,7 +40,7 @@ const User = connection.define('user', {
     }
 })
 
-User.sync({force: false})
+User.sync({force: true})
     .then(()=>{
         console.log('[DATABASE SUCCESS] User Table Used!')
     })

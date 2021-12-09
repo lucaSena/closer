@@ -15,7 +15,7 @@ UserRouter.get('/user/:username', (req, res)=>{
         if(user != null)
         {
             console.log('User Founded')
-            res.json(user)
+            res.render('profile', {user: user})
         }
         else
         {
