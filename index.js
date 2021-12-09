@@ -30,7 +30,7 @@ app.use('/', CommentRouter)
 
 // Main Route
 app.get('/', (req, res)=>{
-    res.render('login', {title: 'Main Title'});
+    res.render('welcome', {title: 'Main Title'});
 })
 
 // Run Server
