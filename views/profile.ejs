@@ -1,6 +1,8 @@
 <%-include('partials/head.ejs', {'title':'Profile'})%>
-<%-include('partials/navbar.ejs')>
+<%-include('partials/navbar.ejs')%>
 
-<h3>Profile</h3>
+<h3>Nome: <%=user.firstname%> <%=user.lastname%></h3>
+<h4>Descrição: <%=user.description%></h4>
+<h4>Seguidores: <%=followers%></h4>
 
-<%-include('partials/footer.ejs')>
+<%-include('partials/footer.ejs')%>

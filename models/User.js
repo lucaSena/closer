@@ -40,7 +40,7 @@ const User = connection.define('user', {
     }
 })
 
-User.sync({force: true})
+User.sync({force: false})
     .then(()=>{
         console.log('[DATABASE SUCCESS] User Table Used!')
     })
