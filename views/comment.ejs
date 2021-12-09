@@ -1,8 +1,9 @@
-<%-include('partials/header.ejs', {'title':'Inicio'})%>
+<%-include('partials/head.ejs', {'title':'Inicio'})%>
+<%-include('partials/header.ejs')%>
     <form action="/comment_photo" method="POST">
-        <input type="text" name="comments" placeholder="Comments">
+        <textarea name="comments" cols="30" rows="10" placeholder="Put Your Comment Here"></textarea>
         <br>
         <br>
-        <input type="submit" value="Post Comment">
+        <button>Comment</button>
     </form>
 <%-include('partials/footer.ejs')%>

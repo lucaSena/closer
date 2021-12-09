@@ -3,12 +3,21 @@ const UserModel = require('../models/User')
 
 const LoginRouter = express.Router()
 
-// Signin Routes
+// Sign In Routes
 LoginRouter.get('/signin', (req, res)=>{
     res.render('signin')
 })
 
 LoginRouter.post('/signin', (req, res)=>{
+    res.send('<h1>Ola</h1>')
+})
+
+// Sign Up Routes
+LoginRouter.get('/signup', (req, res)=>{
+    res.render('signup')
+})
+
+LoginRouter.post('/signup', (req, res)=>{
     const username = req.body.username
     const email = req.body.email
     const password = req.body.password
