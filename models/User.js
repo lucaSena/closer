@@ -5,6 +5,10 @@ const sequelize = require('sequelize')
 const connection = require('../db/config')
 
 const User = connection.define('user', {
+    profile_id:{
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
     firstname:{
         type: Sequelize.STRING,
         allowNull: false
