@@ -1,6 +1,19 @@
 const express = require('express')
 const app = express()
 
+// Session
+const session = require('express-session')
+
+app.use(session({
+    secret: 'keyboard cat',
+    saveUninitialized: true,
+    resave: false,
+
+    cookie: {
+        maxAge: 24 * 60 * 60 * 10000
+    }  
+}))
+
 // Database
 const connection = require('./db/config')
 

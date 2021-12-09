@@ -1,10 +1,12 @@
 <%-include('partials/head.ejs', {'title':'Sign In'})%>
 <%-include('partials/header.ejs')%>
-<form action="/signin">
+
+<form action="/signin" method="POST">
     <input type="email" name="" placeholder="Email">
     <br><br>
     <input type="password" name="" placeholder="Password">
     <br><br>
     <button>Sign In</button>
 </form>
+
 <%-include('partials/footer.ejs')%>

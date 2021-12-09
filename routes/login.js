@@ -9,7 +9,18 @@ LoginRouter.get('/signin', (req, res)=>{
 })
 
 LoginRouter.post('/signin', (req, res)=>{
-    res.send('<h1>Ola</h1>')
+    const email = req.body.email
+    const password = req.body.password
+
+    UserModel.
+
+    req.session.userInfo = {
+        id: 1,
+        email: 'pessoa',
+        username: 'alguma coisa'
+    }
+
+    res.json(req.session.userInfo)
 })
 
 // Sign Up Routes
