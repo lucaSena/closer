@@ -16,7 +16,7 @@ const Follow = connection.define('follow', {
 })
 
 Follow.sync({ force: false })
-then(() => {
+.then(() => {
         console.log('[DATABASE SUCESS] comment Table Used')
     })
     .catch((error) => {

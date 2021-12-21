@@ -79,7 +79,7 @@ LoginRouter.post('/signup', (req, res) => {
     const description = req.body.description
     const date = req.body.date
 
-    console.log(date)
+    console.log(firstname, lastname, username, email, password, gender, description, date)
 
     if (firstname && lastname && username && email && password && gender && description && date) {
         UserModel.create({

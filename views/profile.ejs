@@ -11,11 +11,14 @@
         <h4>Seguidores:
             <%=followers%>
         </h4>
+
+        <%if(follower_id != -1){%>
         <form action="/follow" method="POST">
-            <input type="hidden" name="followed" value="<%=user.profile_id%>">
+            <input type="hidden" name="followed" value="<%=user.id%>">
             <input type="hidden" name="follower" value="<%=follower_id%>">
             <input type="hidden" name="username" value="<%=user.username%>">
             <button>Follow</button>
         </form>
+        <%}%>
 
-        <%-include('partials/footer.ejs')%>
+<%-include('partials/footer.ejs')%>
