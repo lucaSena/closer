@@ -1,8 +1,21 @@
 <%-include('partials/head.ejs', {'title':'Profile'})%>
-<%-include('partials/navbar.ejs')%>
+    <%-include('partials/navbar.ejs')%>
 
-<h3>Nome: <%=user.firstname%> <%=user.lastname%></h3>
-<h4>Descrição: <%=user.description%></h4>
-<h4>Seguidores: <%=followers%></h4>
+        <h3>Nome:
+            <%=user.firstname%>
+                <%=user.lastname%>
+        </h3>
+        <h4>Descrição:
+            <%=user.description%>
+        </h4>
+        <h4>Seguidores:
+            <%=followers%>
+        </h4>
+        <form action="/follow" method="POST">
+            <input type="hidden" name="followed" value="<%=user.profile_id%>">
+            <input type="hidden" name="follower" value="<%=follower_id%>">
+            <input type="hidden" name="username" value="<%=user.username%>">
+            <button>Follow</button>
+        </form>
 
-<%-include('partials/footer.ejs')%>
+        <%-include('partials/footer.ejs')%>

@@ -7,26 +7,25 @@ const LoginRouter = express.Router()
 const MiddleUser = require('../middlewares/user')
 
 // Sign Out
-LoginRouter.get('/signout', (req, res)=>{
+LoginRouter.get('/signout', (req, res) => {
     delete req.session.UserInfo
     res.redirect('/')
 })
 
 // Sign In Routes
-LoginRouter.get('/signin', MiddleUser.notLogged, (req, res)=>{
+LoginRouter.get('/signin', MiddleUser.notLogged, (req, res) => {
     let message = false
-    if(req.session.ErrorMessage)
-    {
+    if (req.session.ErrorMessage) {
         message = req.session.ErrorMessage
 
         // Deleta a sessão para que o erro não permaneça
         delete req.session.ErrorMessage
     }
 
-    res.render('signin', {message: message})
+    res.render('signin', { message: message })
 })
 
-LoginRouter.post('/signin', (req, res)=>{
+LoginRouter.post('/signin', (req, res) => {
     const email = req.body.email
     const password = req.body.password
 
@@ -34,13 +33,12 @@ LoginRouter.post('/signin', (req, res)=>{
 
     UserModel.findOne({
         // Buscar um usuário que possua esse email e essa senha
-        where:{
+        where: {
             email: email,
             password: password
         }
-    }).then((user)=>{
-        if(user)
-        {
+    }).then((user) => {
+        if (user) {
             // Retorno do usuário que foi descoberto
             req.session.UserInfo = {
                 id: user.id,
@@ -53,62 +51,57 @@ LoginRouter.post('/signin', (req, res)=>{
 
             // Redireciona para rota 'home'
             res.redirect('/home')
-        }
-        else
-        {
+        } else {
             // Mensagem de Error(Não encontrou o usuário)
             req.session.ErrorMessage = 'O Login Ta errado'
 
             // Volta para a rota de signin
             res.redirect('/signin')
         }
-    }).catch((error)=>{
+    }).catch((error) => {
         throw error
         res.redirect('/')
     })
 })
 
 // Sign Up Routes
-LoginRouter.get('/signup', (req, res)=>{
+LoginRouter.get('/signup', (req, res) => {
     res.render('signup')
 })
 
-LoginRouter.post('/signup', (req, res)=>{
+LoginRouter.post('/signup', (req, res) => {
     const firstname = req.body.firstname
     const lastname = req.body.lastname
     const username = req.body.username
     const email = req.body.email
     const password = req.body.password
-    const genre = req.body.genre
+    const gender = req.body.gender
     const description = req.body.description
     const date = req.body.date
 
     console.log(date)
 
-    if(firstname && lastname && username && email && password && genre && description && date)
-    {
+    if (firstname && lastname && username && email && password && gender && description && date) {
         UserModel.create({
             lastname: lastname,
             firstname: firstname,
             username: username,
             email: email,
             password: password,
-            gender: genre,
+            gender: gender,
             description: description,
             birth_date: date
-        }).then(()=>{
+        }).then(() => {
             console.log('Inserido no banco de dados')
             res.redirect('/')
-        }).catch((error)=>{
-            if(error)
+        }).catch((error) => {
+            if (error)
                 throw error
 
             console.log('DEU MERDA')
             res.redirect('/')
         })
-    }
-    else
-    {
+    } else {
         console.log('Existem Campos Vazios')
         res.redirect('/')
     }
