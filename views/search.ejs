@@ -1,0 +1,12 @@
+<%-include('partials/head.ejs', {'title':'Search'})%>
+<%-include('partials/navbar.ejs')%>
+
+<%if(search == undefined){%>
+    <h1>Search Something!</h1>   
+<%}else{%>
+    <%users.forEach(user=>{%>
+        <a href="/user/<%=user.username%>"><h1><%=user.firstname%> <%=user.lastname%></h1></a>
+    <%})%>
+<%}%>
+
+<%-include('partials/footer.ejs')%>
