@@ -1,5 +1,5 @@
 <%-include('partials/head.ejs', {'title':'Search'})%>
-<%-include('partials/navbar.ejs')%>
+<%-include('partials/navbar.ejs', {'logged': loggged, 'user_info': userData})%>
 
 <%if(search == undefined){%>
     <h1>Search Something!</h1>   

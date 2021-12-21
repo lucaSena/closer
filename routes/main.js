@@ -37,7 +37,12 @@ MainRouter.get('/search/:search?', (req, res)=>{
     }
     else
     {
-        res.render('search', {search:search})
+        let logged = false
+        let userLogged = req.session.UserInfo
+        if(req.session.UserInfo)
+            logged = true
+
+        res.render('search', {search:search, logged:logged, userData: userLogged})
     }
 })
 
